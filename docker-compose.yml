@@ -1,0 +1,38 @@
+version: "3.9"
+
+services:
+  # Builds the bigas-runner image used to sandbox player bots.
+  # Exits immediately after building — the image is what matters.
+  bigas-runner:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: bigas-runner
+    entrypoint: ["true"]
+    restart: "no"
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    ports:
+      - "8000:8000"
+    volumes:
+      # Mount Docker socket so the API can spin up bot runner containers
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - PYTHONUNBUFFERED=1
+    depends_on:
+      bigas-runner:
+        condition: service_completed_successfully
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - api
+    restart: unless-stopped

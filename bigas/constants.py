@@ -1,0 +1,23 @@
+GRID_WIDTH = 64
+GRID_HEIGHT = 64
+CYCLES_PER_RUN = 5
+AP_PER_CYCLE = 100
+MAX_CARRY = 10
+SHED_SEEDS_PER_CYCLE = 50
+SEED_GROWTH_TICKS = 5
+NUM_ROCKS = 10
+SHED_POSITION = (0, 0)
+FARMER_SPAWN = (1, 0)
+
+SOIL_YIELD = {
+    "good": 250,
+    "great": 500,
+    "best": 1000,
+}
+
+CELL_EMPTY = "empty"
+CELL_SHED = "shed"
+CELL_ROCK = "rock"
+CELL_PLANTED = "planted"
+CELL_GROWING = "growing"
+CELL_RIPE = "ripe"

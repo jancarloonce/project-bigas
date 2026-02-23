@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    image-rendering: pixelated;
+  }
+
+  body {
+    @apply bg-soil-dark text-parchment font-mono m-0;
+    min-height: 100vh;
+  }
+
+  a {
+    @apply text-paddy-light hover:text-ripe transition-colors;
+  }
+
+  h1, h2, h3 {
+    @apply font-pixel;
+  }
+
+  /* Pixel-style scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #060e1a;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #2a9050;
+    border: 2px solid #060e1a;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-paddy text-soil-dark font-pixel text-xs py-3 px-6
+           border-2 border-paddy-light shadow-pixel
+           hover:bg-paddy-light hover:translate-x-[-2px] hover:translate-y-[-2px]
+           active:translate-x-0 active:translate-y-0 active:shadow-none
+           transition-all cursor-pointer;
+  }
+
+  .btn-secondary {
+    @apply bg-soil text-parchment font-pixel text-xs py-3 px-6
+           border-2 border-rock shadow-pixel
+           hover:border-paddy hover:text-paddy-light
+           transition-all cursor-pointer;
+  }
+
+  .card {
+    @apply bg-soil border-2 border-rock shadow-pixel p-4;
+  }
+
+  .pixel-input {
+    @apply bg-soil-dark border-2 border-rock text-parchment font-mono text-sm
+           px-3 py-2 w-full focus:outline-none focus:border-paddy;
+  }
+}
